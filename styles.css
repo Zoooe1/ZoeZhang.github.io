@@ -175,14 +175,14 @@ body {
 
 /* Page width on the Portfolio page only */
 body.portfolio-page .container {
-  max-width: 1600px;                    /* tweak: 1000–1400 for narrower/wider page */
+  max-width: 1400px;                    /* tweak: 1000–1400 for narrower/wider page */
 }
 
 /* Grid (no JS needed). Increase/decrease the min width to control tile size */
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));  /* bigger tiles */
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* bigger tiles */
+  gap: 1.5px;
   margin-block: clamp(1rem, 3vw, 2rem);
 }
 
@@ -206,7 +206,6 @@ body.portfolio-page .card {
 body.portfolio-page .card img {
   display: block;
   width: 100%;
-  inline-size: 100%;                    /* cancels any global 130% rule */
   height: auto;
   border-radius: 0;                     /* rigid edges */
 }
@@ -300,6 +299,9 @@ body.portfolio-page .card.portrait img {
   object-fit: contain;        /* no cropping */
 }
 
+
+
+
 html { font-size: 50%; }
 body.portfolio-page .container { max-width: 800px; } /* was 1600px */
 .masonry-grid {
@@ -311,4 +313,51 @@ body.portfolio-page .container { max-width: 800px; } /* was 1600px */
 .overlay-text p  { font-size: 0.85rem; }
 
 /* Keep full image (no crop) */
-body.portfolio-page .card img { width: 100%; height: auto; }
+body.portfolio-page .card img { width: 120%; height: auto; }
+
+/* === Portfolio overlay: fill + perfect center === */
+
+/* 1) The link wraps the image: make it the positioning context */
+body.portfolio-page .card .card-link {
+  position: relative !important;
+  display: block !important;
+}
+
+/* 2) Make the overlay cover the whole image and center its contents */
+body.portfolio-page .card .overlay {
+  position: absolute !important;
+  inset: 0 !important;            /* top:0 right:0 bottom:0 left:0 */
+  display: grid !important;       /* simpler centering */
+  place-items: center !important; /* both axes */
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(0,0,0,0);      /* keep transparent until hover */
+  opacity: 0;
+  transition: opacity .2s ease;
+  border-radius: 0;
+}
+
+/* 3) Show overlay on hover/focus */
+body.portfolio-page .card:hover .overlay,
+body.portfolio-page .card .card-link:focus-visible .overlay {
+  opacity: 1;
+}
+
+/* 4) Neutralize any generic figcaption rules that fight centering */
+body.portfolio-page figcaption {
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* 5) Make sure the image defines the box we’re covering */
+body.portfolio-page .card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* (Optional) one-time debug aid: see the overlay’s box */
+/* body.portfolio-page .card .overlay { outline: 2px dashed red; } */
