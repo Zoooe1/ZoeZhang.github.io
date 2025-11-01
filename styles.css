@@ -58,7 +58,7 @@ body {
   padding-block: 1rem;
 }
 .brand {
-  font-weight: 900;
+  font-weight: 500;
   text-decoration: none;
   color: var(--fg);
 }
@@ -218,12 +218,13 @@ body.portfolio-page .card img {
 body.portfolio-page .overlay {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;   /* same as inset:0 but explicit */
-  display: flex;
-  align-items: center;                    /* vertical center */
-  justify-content: center;                /* horizontal center */
+  display: grid !important;
+  align-items: center!important;                    /* vertical center */
+  justify-content: center!important;                /* horizontal center */
   width: 100%;
   height: 100%;
   padding: 1rem;
+  margin : 0;
   text-align: center;
   color: #fff;
   background: rgba(0, 0, 0, 0);            /* temp visible while testing */
@@ -300,95 +301,99 @@ body.portfolio-page .card.portrait img {
 }
 
 
+/* ---------- Portfolio: scale without changing layout ---------- */
 
-
-html { font-size: 50%; }
-body.portfolio-page .container { max-width: 800px; } /* was 1600px */
-.masonry-grid {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* was 600px */
-  gap: 12px; /* was 16px */
-}
-/* Optional: overlay text a bit smaller too */
-.overlay-text h3 { font-size: 1rem; }      /* adjust to taste */
-.overlay-text p  { font-size: 0.85rem; }
-
-/* Keep full image (no crop) */
-body.portfolio-page .card img { width: 120%; height: auto; }
-
-/* === Portfolio overlay: fill + perfect center === */
-
-/* 1) The link wraps the image: make it the positioning context */
-body.portfolio-page .card .card-link {
-  position: relative !important;
-  display: block !important;
+/* Define defaults globally so Chrome always has values */
+:root {
+  --scale: 1;                /* default no-scale */
+  --base-container: 1600px;  /* your original values */
+  --base-tile: 600px;
+  --base-gap: 16px;
 }
 
-/* 2) Make the overlay cover the whole image and center its contents */
-body.portfolio-page .card .overlay {
-  position: absolute !important;
-  inset: 0 !important;            /* top:0 right:0 bottom:0 left:0 */
-  display: grid !important;       /* simpler centering */
-  place-items: center !important; /* both axes */
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 1rem;
-  text-align: center;
-  background: rgba(0,0,0,0);      /* keep transparent until hover */
-  opacity: 0;
-  transition: opacity .2s ease;
-  border-radius: 0;
+/* Only shrink the portfolio page (set your desired factor here) */
+body.portfolio-page { --scale: 0.46; }
+
+/* Apply scaling, but only if the browser supports calc(var * number) */
+@supports (width: calc(1px * var(--scale))) {
+  body.portfolio-page .container {
+    max-width: calc(var(--base-container) * var(--scale));
+  }
+  body.portfolio-page .masonry-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(calc(var(--base-tile) * var(--scale)), 1fr)
+    );
+    gap: calc(var(--base-gap) * var(--scale));
+  }
 }
 
-/* 3) Show overlay on hover/focus */
-body.portfolio-page .card:hover .overlay,
-body.portfolio-page .card .card-link:focus-visible .overlay {
+/* Ensure images still fit their tiles */
+body.portfolio-page .card img { width: 100%; height: auto; }
+
+/* Phone: avoid double-shrinking on tiny screens */
+@media (max-width: 600px) {
+  body.portfolio-page { --scale: 1; }
+}
+
+/* ---- Portfolio page: shrink text, keep layout unchanged ---- */
+body.portfolio-page { 
+  font-size: 0.2rem;            /* smaller base text on this page only */
+}
+
+/* Overlay text: override your earlier rem sizes with em so it scales */
+body.portfolio-page .overlay-text      { font-size: 0.8em; }
+body.portfolio-page .overlay-text h3   { font-size: 0.5em; }
+body.portfolio-page .overlay-text p    { font-size: 0.3em; }
+
+/* About & Home: smaller hero/profile photo */
+.profile-photo img {
+  display: block;
+  width: 100%;
+  max-width: clamp(200px, 60vw, 560px);  /* cap size responsively */
+  max-height: 80vh;                      /* avoid towering portraits */
+  height: auto;
+  margin-inline: auto;                   /* center the image */
+  border-radius: 0;                      /* rigid edges */
+  object-fit: contain;                   /* never crop */
+}
+
+.profile-photo figcaption { text-align: center; }
+@media (max-width: 500px) {
+  .profile-photo img { max-width: 92vw; }
+}
+
+/* === Header: smaller brand + nav on every page === */
+.site-header .brand {
+  /* previously quite large; this is modest and responsive */
+  font-size: clamp(1.2rem, 1.2vw + 0.75rem, 1.75rem);
+  font-weight: 200;
+}
+
+.nav-list a {
+  /* fix the old clamp and make links smaller */
+  font-size: clamp(0.9rem, 0.4vw + 0.7rem, 1.05rem);
+}
+
+/* === About page text smaller (targets your <main class="prose"> and .bio) === */
+main.prose {                 /* your About page uses <main class="prose"> */
+  font-size: 0.7rem;        /* tweak: 0.9–0.98 to taste */
+  line-height: 1.55;
+}
+
+/* === Index (home) page text smaller === */
+.landing-title {
+  font-size: clamp(0.9rem, 1vw + 0.9rem, 1.2rem);
+  line-height: 1.3;
+}
+.blurb { font-size: 0.7rem; line-height: 1.5; font-weight:100}
+
+/* Optional: make the small citation under the home photo a bit lighter/smaller */
+.profile-photo figcaption cite {
+  font-size: 0.55rem;
   opacity: 1;
 }
 
-/* 4) Neutralize any generic figcaption rules that fight centering */
-body.portfolio-page figcaption {
-  display: block !important;
-  margin: 0 !important;
-}
-
-/* 5) Make sure the image defines the box we’re covering */
-body.portfolio-page .card img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* (Optional) one-time debug aid: see the overlay’s box */
-/* body.portfolio-page .card .overlay { outline: 2px dashed red; } */
-
-/* === Portfolio: uniform scale without changing layout pattern === */
-body.portfolio-page {
-  /* change this one number to 0.6, 0.75, etc. */
-  --scale: 0.50;
-
-  /* your original base sizes (what you designed around) */
-  --base-container: 1600px;  /* was max-width:1600px */
-  --base-tile: 600px;        /* was minmax(600px, 1fr) */
-  --base-gap: 16px;          /* was gap:16px */
-}
-
-/* Container scales */
-body.portfolio-page .container {
-  max-width: calc(var(--base-container) * var(--scale));
-}
-
-/* Grid scales, column count preserved because both width & tile min shrink equally */
-body.portfolio-page .masonry-grid {
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(calc(var(--base-tile) * var(--scale)), 1fr)
-  );
-  gap: calc(var(--base-gap) * var(--scale));
-}
-
-/* Images: show full photo, no crop */
-body.portfolio-page .card img {
-  width: 100%;
-  height: auto;
+body {
+  padding-bottom: clamp(3rem, 2vh, 2rem);
 }
