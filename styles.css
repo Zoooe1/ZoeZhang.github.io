@@ -299,3 +299,16 @@ body.portfolio-page .card.portrait img {
   max-height: 85vh;           /* prevents “towering” on laptops */
   object-fit: contain;        /* no cropping */
 }
+
+html { font-size: 50%; }
+body.portfolio-page .container { max-width: 800px; } /* was 1600px */
+.masonry-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* was 600px */
+  gap: 12px; /* was 16px */
+}
+/* Optional: overlay text a bit smaller too */
+.overlay-text h3 { font-size: 1rem; }      /* adjust to taste */
+.overlay-text p  { font-size: 0.85rem; }
+
+/* Keep full image (no crop) */
+body.portfolio-page .card img { width: 100%; height: auto; }
