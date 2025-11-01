@@ -361,3 +361,34 @@ body.portfolio-page .card img {
 
 /* (Optional) one-time debug aid: see the overlay’s box */
 /* body.portfolio-page .card .overlay { outline: 2px dashed red; } */
+
+/* === Portfolio: uniform scale without changing layout pattern === */
+body.portfolio-page {
+  /* change this one number to 0.6, 0.75, etc. */
+  --scale: 0.50;
+
+  /* your original base sizes (what you designed around) */
+  --base-container: 1600px;  /* was max-width:1600px */
+  --base-tile: 600px;        /* was minmax(600px, 1fr) */
+  --base-gap: 16px;          /* was gap:16px */
+}
+
+/* Container scales */
+body.portfolio-page .container {
+  max-width: calc(var(--base-container) * var(--scale));
+}
+
+/* Grid scales, column count preserved because both width & tile min shrink equally */
+body.portfolio-page .masonry-grid {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(calc(var(--base-tile) * var(--scale)), 1fr)
+  );
+  gap: calc(var(--base-gap) * var(--scale));
+}
+
+/* Images: show full photo, no crop */
+body.portfolio-page .card img {
+  width: 100%;
+  height: auto;
+}
