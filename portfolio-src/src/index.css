@@ -1,0 +1,43 @@
+/* IMPORTANT: no global selectors like body, a, .container here */
+
+/* Make PhotoAlbum’s figures tidy */
+body.portfolio-page .portfolio-gallery figure { margin: 0; }
+
+/* Card + image */
+body.portfolio-page .portfolio-gallery .card {
+  position: relative;
+  overflow: hidden;
+  background: #f6f7f9;
+}
+body.portfolio-page .portfolio-gallery .card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter .2s ease, transform .2s ease;
+}
+
+/* Overlay caption */
+body.portfolio-page .portfolio-gallery .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+/* Hover / keyboard focus */
+body.portfolio-page .portfolio-gallery .card:hover img,
+body.portfolio-page .portfolio-gallery .card:focus-within img {
+  filter: blur(2px) brightness(.9);
+  transform: scale(1.01);
+}
+body.portfolio-page .portfolio-gallery .card:hover .overlay,
+body.portfolio-page .portfolio-gallery .card:focus-within .overlay {
+  opacity: 1;
+}
