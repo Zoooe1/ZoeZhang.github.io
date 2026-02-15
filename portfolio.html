@@ -1,459 +1,210 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Only layout additions (keeps your existing hover/overlay/blur effects in styles.css) -->
+  <style>
+    .single-portfolio {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 28px 0 40px;
+    }
+
+    /* viewer width for horizontal images */
+    .single-portfolio .card {
+      width: min(620px, 92vw);
+      margin: 0;
+    }
+
+    /* default: horizontal images fill width */
+    .single-portfolio .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* portrait images: smaller (height-capped) */
+    .single-portfolio .card img.is-portrait {
+      width: auto;
+      max-width: 92vw;
+      max-height: 68vh;
+      /* tweak 55vh-75vh */
+      margin: 0 auto;
+    }
+
+    .randomize-btn {
+      border: 1px solid rgba(255, 255, 255, .25);
+      background: rgba(255, 255, 255, .06);
+      color: inherit;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .randomize-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .10);
+    }
+
+    .randomize-btn:active {
+      transform: translateY(0) scale(.98);
+    }
+  </style>
 </head>
+
 <body class="portfolio-page">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="index.html">Zoe Zhang</a>
-      <ul class="nav-list">
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="misc.html">Misc.</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">Zoe Zhang</a>
+        <ul class="nav-list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="misc.html">Misc.</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="container">
-    <section class="masonry-grid" aria-label="Portfolio">
-      <!-- Card 1 -->
+    <section class="single-portfolio" aria-label="Portfolio">
+      <!-- Keep these exact classes to preserve your existing effects -->
       <figure class="card">
         <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_0001.JPG">
-            <img src="assets/images/IMG_0001.JPG" alt="Adventure">
+          <a id="cardLink" class="card-link" href="#">
+            <img id="cardImg" src="" alt="">
             <figcaption class="overlay">
               <div class="overlay-text">
-                <h3>Adventure</h3>
-                <p>I should've worn long sleeves and pants so that I won't get 20 mosquito bites......</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-      <!-- Card 2 -->
-      <figure class="card mt-10">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_3479 3.JPG">
-            <img src="assets/images/IMG_3479 3.JPG" alt="Past">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>The Flowing Past</h3>
-                <p>"No man ever steps in the same river twice, for it's not the same river and he's not the same man." --Heraclitus</p>
+                <h3 id="cardTitle"></h3>
+                <p id="cardDesc"></p>
               </div>
             </figcaption>
           </a>
         </div>
       </figure>
 
-      <figure class="card mt-36">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_3917 5.jpg">
-            <img src="assets/images/IMG_3917 5.jpg" alt="Fishing">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Harmony</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-16">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2365 3.jpg">
-            <img src="assets/images/IMG_2365 3.jpg" alt="SF">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Infinity</h3>
-                <p> Why did 1900 choose to stay on that ship? </p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-15">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_9912 3.jpg">
-            <img src="assets/images/IMG_9912 3.jpg" alt="轮渡">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Half ferry, half life</h3>
-                <p>...On a Seattle ferry... </p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-43">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_9260 3.jpg">
-            <img src="assets/images/IMG_9260 3.jpg" alt="Waiting">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Stanford</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-24">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_9071.jpg">
-            <img src="assets/images/IMG_9071.jpg" alt="Stanford">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3></h3>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-36">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2810 2.JPG">
-            <img src="assets/images/IMG_2810 2.JPG" alt="Store">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Time on the Shelf</h3>
-                <p>On sale!!!</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-24">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_0003.jpg">
-            <img src="assets/images/IMG_0003.jpg" alt="迁徙">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Migration</h3>
-                <p>The world is calling</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-01">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2433.JPG">
-            <img src="assets/images/IMG_2433.JPG" alt="光盘">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Revisted</h3>
-                <p>In honor of the departed musicians and their timeless music.</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card full mt-20">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2809 2.jpg">
-            <img src="assets/images/IMG_2809 2.jpg" alt="奶奶">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Crescent</h3>
-                <p>Wrinkles in Time</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-
-      <figure class="card mt-16">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_0002.JPG">
-            <img src="assets/images/IMG_0002.JPG" alt="猫">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>张乃猫</h3>
-                <p>To remember</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-16">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2444 2.JPG">
-            <img src="assets/images/IMG_2444 2.JPG" alt="老家">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Days</h3>
-                <p>One must learn to dwell peacefully within solitude</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-3">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2441.JPG">
-            <img src="assets/images/IMG_2441.JPG" alt="北京">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Beijing</h3>
-                <p>The place where I grew up</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card portrait mt-10">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2161 4.jpg">
-            <img src="assets/images/IMG_2161 4.jpg" alt="The Ripples of Walden">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>The Ripples of Walden</h3>
-                <p><br> <br>Took this by an accident while I was walking in a park (seeking relief from the AP Bio, yes). 
-                  <br> <br>  Its spiraling stem, with perfect golden ratio, dancing, breathing, and reaching 
-                  towards the sun, reminding me of the ripples in the Walden Pond. </p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-10">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_3441 3.JPG">
-            <img src="assets/images/IMG_3441 3.JPG" alt="连接的线条">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>The Lines of connection</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-10">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2430 3.JPG">
-            <img src="assets/images/IMG_2430 3.JPG" alt="生命的线条">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>The Lines of Life</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-       <figure class="card mt-48">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_2182.jpg">
-            <img src="assets/images/IMG_2182.jpg" alt="松">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Pines</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-48">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_4446 2.JPG">
-            <img src="assets/images/IMG_4446 2.JPG" alt="一场等待">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>A wait</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-43">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_4814.jpg">
-            <img src="assets/images/IMG_4814.jpg" alt="分形">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Fractal</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-32">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_4802.jpg">
-            <img src="assets/images/IMG_4802.jpg" alt="春天">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Busy Bees</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_0067.JPG">
-            <img src="assets/images/IMG_0067.JPG" alt="春天">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Spring</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-05">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_7317.jpg">
-            <img src="assets/images/IMG_7317.JPG" alt="水手">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3></h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-      
-      <figure class="card mt-36">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_8563.jpg">
-            <img src="assets/images/IMG_8563.JPG" alt="枫叶">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Dizzy Stars</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-39">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_4904.jpg">
-            <img src="assets/images/IMG_4904.jpg" alt="风的形状">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Shape of the wind</h3>
-                <p>For people who may not know, this is actually the grass in California, during dry season(isn't that crazyyy??) </p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card mt-43">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_9251.jpg">
-            <img src="assets/images/IMG_9251.JPG" alt="阅读">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>A rainy Sunday in autumn</h3>
-                <p>Reading is the quiet self awakening</p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-      <figure class="card full mt-36">
-        <div class="card-content">
-          <a class="card-link" href="assets/images/IMG_4665.jpg">
-            <img src="assets/images/IMG_4665.jpg" alt="枫叶">
-            <figcaption class="overlay">
-              <div class="overlay-text">
-                <h3>Time</h3>
-                <p></p>
-              </div>
-            </figcaption>
-          </a>
-        </div>
-      </figure>
-
-
-      
-
-
-     
-
-
-
-      
-
-      
-
-      
-
+      <button id="randomBtn" class="randomize-btn" type="button">click me!</button>
     </section>
   </main>
 
-  
   <script>
-    (function () {
-      const grid = document.querySelector('.masonry-grid');
-      if (!grid) return;
+    (() => {
+      const items = [
+        { src: "assets/images/IMG_0001.jpg", alt: "Adventure", title: "Adventure", desc: "I should've worn long sleeves and pants so that I won't get 20 mosquito bites......" },
+        { src: "assets/images/IMG_3479 3.jpg", alt: "Past", title: "The Flowing Past", desc: "\"No man ever steps in the same river twice, for it's not the same river and he's not the same man.\" --Heraclitus" },
+        { src: "assets/images/IMG_3917 5.jpg", alt: "Fishing", title: "Harmony", desc: "" },
+        { src: "assets/images/IMG_2365 3.jpg", alt: "SF", title: "Infinity", desc: " Why did 1900 choose to stay on that ship? " },
+        { src: "assets/images/IMG_9912 3.jpg", alt: "轮渡", title: "Half ferry, half life", desc: "-^-^-On a Seattle ferry--^- " },
+        { src: "assets/images/IMG_9260 3.jpg", alt: "Waiting", title: "Waiting", desc: "" },
+        { src: "assets/images/IMG_9071.jpg", alt: "Stanford", title: "Stanford", desc: "" },
+        { src: "assets/images/IMG_2810 2.jpg", alt: "Store", title: "Time on the Shelf", desc: "On sale!!!" },
+        { src: "assets/images/IMG_0003.jpg", alt: "迁徙", title: "Migration", desc: "The world is calling" },
+        { src: "assets/images/IMG_2433.jpg", alt: "光盘", title: "Revisted", desc: "In honor of the departed musicians and their timeless music." },
+        { src: "assets/images/IMG_2809 2.jpg", alt: "奶奶", title: "Crescent", desc: "Wrinkles in Time" },
+        { src: "assets/images/IMG_0002.jpg", alt: "猫", title: "张乃猫", desc: "To remember" },
+        { src: "assets/images/IMG_2444 2.jpg", alt: "老家", title: "Days", desc: "One must learn to dwell peacefully within solitude" },
+        { src: "assets/images/IMG_2441.jpg", alt: "北京", title: "Beijing", desc: "The place I grew up" },
+        {
+          src: "assets/images/IMG_2161 4.jpg", alt: "The Ripples of Walden", title: "The Ripples of Walden",
+          desc: "<br><br>Took this by an accident while I was walking in a park (seeking relief from the AP Bio, yes).<br><br>Its spiraling stem, with perfect golden ratio, dancing, breathing, and reaching towards the sun, reminding me of the ripples in the Walden Pond."
+        },
+        { src: "assets/images/IMG_3441 3.jpg", alt: "连接的线条", title: "The Lines of connection", desc: "" },
+        { src: "assets/images/IMG_2430 3.jpg", alt: "生命的线条", title: "The Lines of Life", desc: "" },
+        { src: "assets/images/IMG_2182.jpg", alt: "松", title: "Pines", desc: "" },
+        { src: "assets/images/IMG_4446 2.jpg", alt: "一场等待", title: "A wait", desc: "" },
+        { src: "assets/images/IMG_4814.jpg", alt: "分形", title: "Fractal", desc: "" },
+        { src: "assets/images/IMG_4802.jpg", alt: "蜜蜂", title: "Busy Bees", desc: "" },
+        { src: "assets/images/IMG_0067.jpg", alt: "春天", title: "", desc: "" },
+        { src: "assets/images/IMG_7317.jpg", alt: "水手", title: "Sailor", desc: "I am the Sailor" },
+        { src: "assets/images/IMG_8563.jpg", alt: "枫叶", title: "Dizzy Stars", desc: "" },
+        {
+          src: "assets/images/IMG_4634.jpg", alt: "风的形状", title: "Shape of the wind",
+          desc: ""
+        },
+        { src: "assets/images/IMG_0004.JPG", alt: "阅读", title: "A rainy Sunday in autumn", desc: "Reading is the quiet self awakening" },
+        { src: "assets/images/IMG_4665.jpg", alt: "时间", title: "Time", desc: "" },
+        { src: "assets/images/IMG_0068.jpg", alt: "柳絮", title: "The first photo of my cannon camera", desc: "" },
+        { src: "assets/images/IMG_4657.jpg", alt: "一片时间", title: "a slice of time", desc: "" },
+        { src: "assets/images/IMG_5074.jpg", alt: "童年", title: "Peek into the Chilhood", desc: "" },
+        { src: "assets/images/IMG_5327.jpg", alt: "木头", title: "Drift Wood", desc: "" },
+        { src: "assets/images/IMG_5647.jpg", alt: "小鹿", title: "Observer", desc: "" },
+        { src: "assets/images/IMG_2434 3.jpg", alt: "Store", title: "", desc: "" },
+        { src: "assets/images/IMG_5685.jpg", alt: "", title: "I came to this world", desc: "<br><br>我来到这个世界<br><br>为的是看太阳,和 蔚蓝色的原野<br><br>和 连绵的群山<br><br><br><br><br><br>我来到这个世界<br><br>为的是看大海 和百花盛开的峡谷<br><br>我与世界面对面签订了合约<br><br>我是世界的真主<br><br>我战胜了冷漠无言的冰川<br><br>我创造了自己的理想" },
+        { src: "assets/images/IMG_5647.jpg", alt: "Observer", title: "", desc: "" },
+        { src: "assets/images/IMG_5673.jpg", alt: "", title: "Dawn", desc: "" },
+        { src: "assets/images/IMG_2708 2.jpg", alt: "", title: "Puerto Rico", desc: "" },
+        { src: "assets/images/IMG_2491.jpg", alt: "", title: "Damping", desc: "" },
+        { src: "assets/images/IMG_6420.JPG", alt: "", title: "The Burning Summer", desc: "" },
+        { src: "assets/images/IMG_9534.jpg", alt: "绿昏", title: "dusk", desc: "" },
+        { src: "assets/images/IMG_1775.jpg", alt: "夏日，烟火", title: "Lemon", desc: "" },
+        { src: "assets/images/IMG_2542 2.jpg", alt: "波粒二象性", title: "波粒二象性", desc: "" },
+        { src: "assets/images/IMG_1333 2.jpg", alt: "", title: "Freedom", desc: "" },
+        { src: "assets/images/IMG_1354.jpg", alt: "", title: "Creation", desc: "" },
+        { src: "assets/images/IMG_0811 2.jpg", alt: "", title: "", desc: "" },
+        { src: "assets/images/IMG_0102.jpg", alt: "", title: "Alive", desc: "" },
+        { src: "assets/images/IMG_3549.jpg", alt: "", title: "Conscious", desc: "" },
+        { src: "assets/images/IMG_2883.jpg", alt: "", title: "ASGSR", desc: "" },
 
-      const styles = getComputedStyle(grid);
-      const gap = parseInt(styles.getPropertyValue('gap')) || 0;
-      const row = parseInt(styles.getPropertyValue('grid-auto-rows')) || 10;
+      ];
 
-      function sizeItem(item) {
-        const content = item.querySelector('.card-content') || item;
-        const h = content.getBoundingClientRect().height;
-        const span = Math.ceil((h + gap) / (row + gap));
-        item.style.gridRowEnd = 'span ' + span;
-      }
+      const cardLink = document.getElementById("cardLink");
+      const cardImg = document.getElementById("cardImg");
+      const cardTitle = document.getElementById("cardTitle");
+      const cardDesc = document.getElementById("cardDesc");
+      const btn = document.getElementById("randomBtn");
 
-      function resizeAll() {
-        grid.querySelectorAll('.card').forEach(sizeItem);
-      }
+      let last = -1;
 
-      window.addEventListener('resize', resizeAll);
-      grid.querySelectorAll('img').forEach(img => {
-        if (!img.complete) {
-          img.addEventListener('load', resizeAll);
-          img.addEventListener('error', resizeAll);
-        }
-      });
+      const pick = () => {
+        if (items.length <= 1) return 0;
+        let i = Math.floor(Math.random() * items.length);
+        while (i === last) i = Math.floor(Math.random() * items.length);
+        return i;
+      };
 
-      // Initial pass once DOM is ready
-      resizeAll();
+      const render = (i) => {
+        const it = items[i];
+        last = i;
+
+        cardLink.href = it.src;
+
+        cardLink.classList.remove("is-portrait");
+
+        cardImg.onload = () => {
+          const portrait = cardImg.naturalHeight > cardImg.naturalWidth;
+          cardLink.classList.toggle("is-portrait", portrait);
+        };
+
+        cardImg.src = it.src;
+        cardImg.alt = it.alt || "";
+
+        cardTitle.textContent = it.title || "";
+        cardDesc.innerHTML = it.desc || "";
+      };
+
+      const randomize = () => render(pick());
+
+      window.addEventListener("DOMContentLoaded", randomize);
+      btn.addEventListener("click", randomize);
     })();
   </script>
 </body>
+
 </html>

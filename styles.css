@@ -1,19 +1,24 @@
-
 /* Minimal, responsive, accessible starter */
 :root {
   --bg: #eedec48b;
   --fg: #111111;
   --muted: #5f6b7a;
-  --brand: #0a66c2; /* accessible blue */
+  --brand: #0a66c2;
+  /* accessible blue */
   --radius: 14px;
   --maxw: 72rem;
   --space: clamp(0.75rem, 2vw, 1.25rem);
   --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { color-scheme: light; }
+html {
+  color-scheme: light;
+}
+
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
@@ -37,9 +42,11 @@ body {
   height: 1px;
   overflow: hidden;
 }
+
 .skip-link:focus {
   position: static;
-  width: auto; height: auto;
+  width: auto;
+  height: auto;
   margin: var(--space);
   padding: .25rem .5rem;
   background: #fffa;
@@ -50,6 +57,7 @@ body {
   padding-block: 1.4rem;
   margin-bottom: 2rem;
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -57,77 +65,111 @@ body {
   gap: var(--space);
   padding-block: 1rem;
 }
+
 .brand {
   font-weight: 500;
   text-decoration: none;
   color: var(--fg);
 }
+
 .nav-list {
   display: flex;
   gap: clamp(.5rem, 2vw, 1rem);
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
 .nav-list a {
-  font-size: clamp(1.7rem, 0.5vw + 0.95rem, 1.2rem); /* responsive bump */
+  font-size: clamp(1rem, 0.5vw + 0.85rem, 1.2rem);
   text-decoration: none;
   color: var(--fg);
   padding: .25rem .5rem;
   border-radius: .5rem;
 }
+
 .site-header .nav .nav-list a:hover,
 .site-header .nav .nav-list a:active {
-  background: transparent;   /* no box */
-  color: #3929159d;            /* grey text while “half click”/hover */
+  background: transparent;
+  /* no box */
+  color: #3929159d;
+  /* grey text while “half click”/hover */
   box-shadow: none;
 }
 
 .hero {
   padding-block: clamp(2rem, 6vw, 4rem);
 }
-.highlight { background: #fffa8b; padding: .1rem .4rem; border-radius: .4rem; }
-.links a { color: var(--brand); }
-.links a:hover { text-decoration: underline; }
 
-.home-section { margin-block: clamp(1.5rem, 3vw, 2.5rem); }
+.highlight {
+  background: #fffa8b;
+  padding: .1rem .4rem;
+  border-radius: .4rem;
+}
+
+.links a {
+  color: var(--brand);
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.home-section {
+  margin-block: clamp(1.5rem, 3vw, 2.5rem);
+}
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space);
 }
+
 .card {
   border: 1px solid #e6e8eb;
   border-radius: var(--radius);
   overflow: clip;
   background: #fff;
 }
+
 .card img {
   inline-size: 130%;
   block-size: auto;
   display: block;
 }
+
 .card figcaption {
   padding: .75rem;
   color: var(--fg);
 }
 
-.post-list { padding-left: 1rem; }
-.post-list li { margin-block: .25rem; }
+.post-list {
+  padding-left: 1rem;
+}
+
+.post-list li {
+  margin-block: .25rem;
+}
 
 .prose {
   max-width: 70ch;
 }
+
 .profile-photo img {
-  max-width: 100%;     /* e.g., 30% of its container’s width */
-  width: auto;         /* lets the browser decide width up to the max */
+  max-width: 100%;
+  /* e.g., 30% of its container’s width */
+  width: auto;
+  /* lets the browser decide width up to the max */
   height: auto;
 }
+
 .profile-photo figcaption {
   text-align: center;
 }
 
-.muted { color: var(--muted); }
+.muted {
+  color: var(--muted);
+}
 
 .site-footer {
   border-top: 1px solid #e6e8eb;
@@ -138,23 +180,32 @@ body {
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
-  .nav-list { flex-wrap: wrap; }
+  .nav-list {
+    flex-wrap: wrap;
+  }
 }
 
 .site-header .brand {
-  font-size: clamp(2.3rem, 2.4vw + 0.5rem, 2.4rem); /* scales nicely */
+  font-size: clamp(2.3rem, 2.4vw + 0.5rem, 2.4rem);
+  /* scales nicely */
   /* font-family: "Times New Roman", Times, serif; */
   font-family: "Didot", "Bodoni MT", "Bodoni 72", "Hoefler Text", Garamond, serif;
-  color: #02216d;           /* pick your brand color */
-  font-weight: 130;         /* extra bold for the name */
-  text-decoration: none;    /* no underline */
-  line-height: 1.1;         /* tighter lines for big text */
+  color: #02216d;
+  /* pick your brand color */
+  font-weight: 130;
+  /* extra bold for the name */
+  text-decoration: none;
+  /* no underline */
+  line-height: 1.1;
+  /* tighter lines for big text */
 }
 
 /* Only change figcaptions on the portfolio page */
-.portfolio-page figcaption { 
-  color: #ffffff;           /* pick your color */
-  display: inline-block;     /* so margin-top works nicely */
+.portfolio-page figcaption {
+  color: #ffffff;
+  /* pick your color */
+  display: inline-block;
+  /* so margin-top works nicely */
   margin-top: .25rem;
   font-style: normal;
   font-size: 2rem;
@@ -162,11 +213,16 @@ body {
 
 .landing-title {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1rem, 3vw + 1rem, 1.6rem);  /* responsive sizing: smaller on mobile, bigger on desktop */
-  color: #02216d;                 /* change this to your preferred color (e.g., #0a66c2 for blue) */
-  font-weight: 550;               /* bold or adjust to 400 for normal weight */
-  margin-block: 1rem;           /* spacing above and below */
-  line-height: 1.5;               /* tighter lines for big text */
+  font-size: clamp(1rem, 3vw + 1rem, 1.6rem);
+  /* responsive sizing: smaller on mobile, bigger on desktop */
+  color: #02216d;
+  /* change this to your preferred color (e.g., #0a66c2 for blue) */
+  font-weight: 550;
+  /* bold or adjust to 400 for normal weight */
+  margin-block: 1rem;
+  /* spacing above and below */
+  line-height: 1.5;
+  /* tighter lines for big text */
 }
 
 
@@ -175,31 +231,48 @@ body {
 
 /* Page width on the Portfolio page only */
 body.portfolio-page .container {
-  max-width: 1400px;                    /* tweak: 1000–1400 for narrower/wider page */
+  max-width: 1400px;
+  /* tweak: 1000–1400 for narrower/wider page */
 }
 
 /* Grid (no JS needed). Increase/decrease the min width to control tile size */
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* bigger tiles */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* bigger tiles */
   gap: 1.5px;
   margin-block: clamp(1rem, 3vw, 2rem);
 }
 
 /* Responsive: reduce column width on smaller screens */
-@media (max-width: 900px)  { .masonry-grid { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); } }
-@media (max-width: 600px)  { .masonry-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .masonry-grid {
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Tiles */
 body.portfolio-page .card {
   position: relative;
   background: transparent;
-  overflow: visible;                    /* avoid clipping */
-  border: none;                         /* no border */
-  box-shadow: none;                     /* no shadow */
-  border-radius: 0;                     /* rigid edges */
-  filter: none; /* prevents animation distortion */
-  transform: none; /* avoids jitter or blur */
+  overflow: visible;
+  /* avoid clipping */
+  border: none;
+  /* no border */
+  box-shadow: none;
+  /* no shadow */
+  border-radius: 0;
+  /* rigid edges */
+  filter: none;
+  /* prevents animation distortion */
+  transform: none;
+  /* avoids jitter or blur */
 }
 
 /* Images (show full photo, no zoom) */
@@ -207,57 +280,150 @@ body.portfolio-page .card img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 0;                     /* rigid edges */
+  border-radius: 0;
+  /* rigid edges */
 }
 
 /* Overlay + “half-click” hover */
-.card-link { display: block; text-decoration: none; color: inherit; outline: none; }
-.card-link:focus-visible { outline: 0px solid #0a66c2; outline-offset: 0px; }
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.card-link:focus-visible {
+  outline: 0px solid #0a66c2;
+  outline-offset: 0px;
+}
 
 /* fill the card + hard-center text */
 body.portfolio-page .overlay {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;   /* same as inset:0 but explicit */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* same as inset:0 but explicit */
   display: grid !important;
-  align-items: center!important;                    /* vertical center */
-  justify-content: center!important;                /* horizontal center */
+  align-items: center !important;
+  /* vertical center */
+  justify-content: center !important;
+  /* horizontal center */
   width: 100%;
   height: 100%;
   padding: 1rem;
-  margin : 0;
+  margin: 0;
   text-align: center;
   color: #fff;
-  background: rgba(0, 0, 0, 0);            /* temp visible while testing */
+  background: rgba(0, 0, 0, 0);
+  /* temp visible while testing */
   opacity: 0;
   transition: opacity .2s ease;
   border-radius: 0;
 }
-.card:hover img, .card:focus-within img { filter: blur(0.05px) brightness(.9); transform: scale(1); }
-.card:hover .overlay, .card:focus-within .overlay { opacity: 1; }
+
+.card:hover img,
+.card:focus-within img {
+  filter: blur(0.05px) brightness(.9);
+  transform: scale(1);
+}
+
+.card:hover .overlay,
+.card:focus-within .overlay {
+  opacity: 1;
+}
 
 /* Utilities */
-.mt-01  { margin-top: .1rem; }
-.mt-05  { margin-top: .5rem; }
-.mt-1  { margin-top: 1rem; }
-.mt-15 { margin-top: 1.5rem; }
-.mt-2 { margin-top: 2rem; }
-.mt-3 { margin-top: 2.5rem; }
-.mt-4 { margin-top: 4rem; }
-.mt-5 { margin-top: 5rem; }
-.mt-7 { margin-top: 7rem; }
-.mt-10 { margin-top: 10rem; }
-.mt-13 { margin-top: 13rem; }
-.mt-16 { margin-top: 16rem; }
-.mt-20 { margin-top: 20rem; }
-.mt-24 { margin-top: 24rem; }
-.mt-28 { margin-top: 28rem; }
-.mt-30 { margin-top: 30rem; }
-.mt-32 { margin-top: 32rem; }
-.mt-36 { margin-top: 36rem; }
-.mt-39 { margin-top: 39rem; }
-.mt-43 { margin-top: 43rem; }
-.mt-48 { margin-top: 48rem; }
-.col-full { grid-column: 1 / -1; }      /* make a tile span all columns */
+.mt-01 {
+  margin-top: .1rem;
+}
+
+.mt-05 {
+  margin-top: .5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-15 {
+  margin-top: 1.5rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 2.5rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.mt-7 {
+  margin-top: 7rem;
+}
+
+.mt-10 {
+  margin-top: 10rem;
+}
+
+.mt-13 {
+  margin-top: 13rem;
+}
+
+.mt-16 {
+  margin-top: 16rem;
+}
+
+.mt-20 {
+  margin-top: 20rem;
+}
+
+.mt-24 {
+  margin-top: 24rem;
+}
+
+.mt-28 {
+  margin-top: 28rem;
+}
+
+.mt-30 {
+  margin-top: 30rem;
+}
+
+.mt-32 {
+  margin-top: 32rem;
+}
+
+.mt-36 {
+  margin-top: 36rem;
+}
+
+.mt-39 {
+  margin-top: 39rem;
+}
+
+.mt-43 {
+  margin-top: 43rem;
+}
+
+.mt-48 {
+  margin-top: 48rem;
+}
+
+.col-full {
+  grid-column: 1 / -1;
+}
+
+/* make a tile span all columns */
 
 /* Overlay text layout */
 .overlay-text {
@@ -281,13 +447,21 @@ body.portfolio-page .overlay {
   margin: 0;
   opacity: 0.9;
 }
-.masonry-grid .card.full { grid-column: 1 / -1; }
+
+.masonry-grid .card.full {
+  grid-column: 1 / -1;
+}
+
 /* Portrait utility: full row, but cap width so it isn't massive */
 .masonry-grid .card.portrait {
-  grid-column: 1 / -1;        /* take the whole row */
-  max-width: 600px;           /* <- pick your cap (e.g., 600/720/840) */
-  margin-inline: auto;        /* center in the wide section */
+  grid-column: 1 / -1;
+  /* take the whole row */
+  max-width: 600px;
+  /* <- pick your cap (e.g., 600/720/840) */
+  margin-inline: auto;
+  /* center in the wide section */
 }
+
 /* Make sure the image fits that cap cleanly */
 body.portfolio-page .card.portrait img {
   width: 100%;
@@ -296,8 +470,10 @@ body.portfolio-page .card.portrait img {
 
 /* Optional: also keep very tall images within the viewport height */
 body.portfolio-page .card.portrait img {
-  max-height: 85vh;           /* prevents “towering” on laptops */
-  object-fit: contain;        /* no cropping */
+  max-height: 85vh;
+  /* prevents “towering” on laptops */
+  object-fit: contain;
+  /* no cropping */
 }
 
 
@@ -305,62 +481,87 @@ body.portfolio-page .card.portrait img {
 
 /* Define defaults globally so Chrome always has values */
 :root {
-  --scale: 1;                /* default no-scale */
-  --base-container: 1600px;  /* your original values */
+  --scale: 1;
+  /* default no-scale */
+  --base-container: 1600px;
+  /* your original values */
   --base-tile: 600px;
   --base-gap: 16px;
 }
 
 /* Only shrink the portfolio page (set your desired factor here) */
-body.portfolio-page { --scale: 0.46; }
+body.portfolio-page {
+  --scale: 0.46;
+}
 
 /* Apply scaling, but only if the browser supports calc(var * number) */
 @supports (width: calc(1px * var(--scale))) {
   body.portfolio-page .container {
     max-width: calc(var(--base-container) * var(--scale));
   }
+
   body.portfolio-page .masonry-grid {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(calc(var(--base-tile) * var(--scale)), 1fr)
-    );
+    grid-template-columns: repeat(auto-fill,
+        minmax(calc(var(--base-tile) * var(--scale)), 1fr));
     gap: calc(var(--base-gap) * var(--scale));
   }
 }
 
 /* Ensure images still fit their tiles */
-body.portfolio-page .card img { width: 100%; height: auto; }
+body.portfolio-page .card img {
+  width: 100%;
+  height: auto;
+}
 
 /* Phone: avoid double-shrinking on tiny screens */
 @media (max-width: 600px) {
-  body.portfolio-page { --scale: 1; }
+  body.portfolio-page {
+    --scale: 1;
+  }
 }
 
-/* ---- Portfolio page: shrink text, keep layout unchanged ---- */
+/* ---- Portfolio page: shrink text, keep layout unchanged ----
 body.portfolio-page { 
   font-size: 0.2rem;            /* smaller base text on this page only */
-}
 
 /* Overlay text: override your earlier rem sizes with em so it scales */
-body.portfolio-page .overlay-text      { font-size: 0.8em; }
-body.portfolio-page .overlay-text h3   { font-size: 0.5em; }
-body.portfolio-page .overlay-text p    { font-size: 0.3em; }
+body.portfolio-page .overlay-text {
+  font-size: 0.8em;
+}
+
+body.portfolio-page .overlay-text h3 {
+  font-size: 0.7em;
+}
+
+body.portfolio-page .overlay-text p {
+  font-size: 0.4em;
+}
 
 /* About & Home: smaller hero/profile photo */
 .profile-photo img {
   display: block;
   width: 100%;
-  max-width: clamp(200px, 60vw, 560px);  /* cap size responsively */
-  max-height: 80vh;                      /* avoid towering portraits */
+  max-width: clamp(200px, 60vw, 560px);
+  /* cap size responsively */
+  max-height: 80vh;
+  /* avoid towering portraits */
   height: auto;
-  margin-inline: auto;                   /* center the image */
-  border-radius: 0;                      /* rigid edges */
-  object-fit: contain;                   /* never crop */
+  margin-inline: auto;
+  /* center the image */
+  border-radius: 0;
+  /* rigid edges */
+  object-fit: contain;
+  /* never crop */
 }
 
-.profile-photo figcaption { text-align: center; }
+.profile-photo figcaption {
+  text-align: center;
+}
+
 @media (max-width: 500px) {
-  .profile-photo img { max-width: 92vw; }
+  .profile-photo img {
+    max-width: 92vw;
+  }
 }
 
 /* === Header: smaller brand + nav on every page === */
@@ -376,17 +577,23 @@ body.portfolio-page .overlay-text p    { font-size: 0.3em; }
 }
 
 /* === About page text smaller (targets your <main class="prose"> and .bio) === */
-main.prose {                 /* your About page uses <main class="prose"> */
-  font-size: 0.7rem;        /* tweak: 0.9–0.98 to taste */
+main.prose {
+  /* your About page uses <main class="prose"> */
+  font-size: 0.7rem;
+  /* tweak: 0.9–0.98 to taste */
   line-height: 1.55;
 }
 
-/* === Index (home) page text smaller === */
 .landing-title {
   font-size: clamp(0.9rem, 1vw + 0.9rem, 1.2rem);
   line-height: 1.3;
 }
-.blurb { font-size: 0.7rem; line-height: 1.5; font-weight:100}
+
+.blurb {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  font-weight: 100
+}
 
 /* Optional: make the small citation under the home photo a bit lighter/smaller */
 .profile-photo figcaption cite {
@@ -396,4 +603,182 @@ main.prose {                 /* your About page uses <main class="prose"> */
 
 body {
   padding-bottom: clamp(3rem, 2vh, 2rem);
+}
+
+
+
+
+
+
+
+
+/* ===== Blog list (Jacob-style: thumbnail + title/date/excerpt) ===== */
+
+.post-feed {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 1.25rem 2.5rem;
+}
+
+.post-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e6e8eb;
+}
+
+.post-thumb {
+  display: block;
+  border-radius: var(--radius);
+  overflow: clip;
+}
+
+.post-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-title {
+  margin: 0 0 0.25rem 0;
+  font-size: clamp(1.1rem, 0.8vw + 1rem, 1.5rem);
+  line-height: 1.25;
+}
+
+.post-title a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  margin: 0 0 0.75rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.post-excerpt {
+  margin: 0 0 0.75rem 0;
+  max-width: 70ch;
+}
+
+.post-more {
+  color: var(--brand);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-more:hover {
+  text-decoration: underline;
+}
+
+main.container>h1 {
+  text-align: center;
+}
+
+/* Title hover/active effect (match your nav link behavior) */
+.posts-title {
+  margin: 0 0 1.25rem;
+  font-weight: 700;
+}
+
+.posts-title:hover,
+.posts-title:active {
+  background: transparent;
+  color: #3929159d;
+  box-shadow: none;
+}
+
+/* Make sure the image never opens the image file */
+.post-thumb {
+  display: block;
+  text-decoration: none;
+}
+
+.post-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post-title a:hover,
+.post-title a:active {
+  text-decoration: none;
+  background: transparent;
+  color: #3929159d;
+  box-shadow: none;
+}
+
+.post-title a {
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .post-card {
+    grid-template-columns: 1fr;
+  }
+
+  .post-thumb {
+    max-width: 520px;
+  }
+}
+
+/* Make the link be the "frame" for both image + overlay */
+.single-portfolio .card-link {
+  position: relative;
+  display: block;
+  width: min(620px, 92vw);
+  /* your normal horizontal size */
+  margin-inline: auto;
+}
+
+/* Overlay now matches the exact link box (same as the image frame) */
+.single-portfolio .overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* Default image fills the link frame */
+.single-portfolio .card-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Portrait: shrink the frame to match the image (so overlay can't exceed image) */
+.single-portfolio .card-link.is-portrait {
+  width: fit-content;
+  max-width: 92vw;
+}
+
+/* Portrait image smaller by height cap */
+.single-portfolio .card-link.is-portrait img {
+  width: auto;
+  max-width: 92vw;
+  max-height: 80vh;
+  /* tweak */
+  margin: 0 auto;
+}
+
+/* Optional: ensure long captions wrap nicely inside the image */
+.single-portfolio .overlay-text {
+  max-width: 100%;
+}
+
+.single-portfolio .overlay-text p {
+  max-width: min(55ch, 100%);
+  margin-inline: auto;
+  word-break: break-word;
+}
+
+.single-portfolio {
+  padding: 3px 0 40px;
+  /* less top space */
 }
