@@ -782,3 +782,14 @@ main.container>h1 {
   padding: 3px 0 40px;
   /* less top space */
 }
+.randomize-btn{
+  background: #02216d;          /* solid button color */
+  color: #fff;                  /* text color */
+  border: 1px solid #02216d;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 22px rgba(2, 33, 109, 0.22);
+  cursor: pointer;
+}
