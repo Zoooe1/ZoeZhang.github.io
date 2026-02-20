@@ -1,30 +1,412 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects — Your Name</title>
+  <title>Projects — Zoe Zhang</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ===== Page background ===== */
+    body.projects-page {
+      min-height: 10vh;
+      background: url("assets/images/IMG_3479_3.jpg") center / cover no-repeat fixed;
+      color: #fff;
+    }
+
+    /* Optional: subtle darkening for readability */
+    body.projects-page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Keep header above overlay */
+    .site-header {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ===== Layout grid ===== */
+    .projects-layout {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 220px 1px minmax(420px, 720px);
+      gap: 48px;
+      padding: 34px 48px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Vertical divider line */
+    .projects-divider {
+      background: #eedec48b;
+      width: 1px;
+    }
+
+    /* ===== Left sidebar ===== */
+    .projects-sidebar {
+      position: sticky;
+      top: 120px;
+      /* below header */
+      align-self: start;
+      font-family: Papyrus, "Papyrus", "Comic Sans MS", cursive;
+    }
+
+    .sidebar-group {
+      margin-bottom: 52px;
+    }
+
+    .sidebar-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 0 0 14px 0;
+      letter-spacing: 0.2px;
+    }
+
+    .sidebar-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+
+    }
+
+    .sidebar-links a {
+      color: #eedec4b4;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .sidebar-links a:hover,
+    .sidebar-links a:active {
+      color: #ffffff;
+    }
+
+    /* ===== Center column ===== */
+    .projects-content {
+      padding-top: 150px;
+      font-family: Papyrus, "Papyrus", "Comic Sans MS", cursive;
+    }
+
+    .experience {
+      display: block;
+      /* whole block clickable */
+      text-decoration: none;
+      color: inherit;
+      margin: 0 0 88px 0;
+      /* spacing between experiences */
+      max-width: 720px;
+    }
+
+    .experience-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.2px;
+      font-family: Papyrus, "Papyrus", "Comic Sans MS", cursive;
+    }
+
+    .experience-sub {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0;
+      line-height: 0.5;
+      max-width: 52ch;
+    }
+
+    /* Hover: “half click” vibe without boxes */
+    .experience:hover .experience-title,
+    .experience:active .experience-title {
+      color: rgb(255, 255, 255);
+    }
+
+    /* Accessibility focus */
+    .experience:focus-visible {
+      outline: 0px dashed rgba(255, 255, 255, 0.736);
+      outline-offset: 10px;
+      border-radius: 2px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 140px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .projects-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 22px 18px 56px;
+      }
+
+      .projects-divider {
+        display: none;
+      }
+
+      .projects-sidebar {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    /* make anchor align nicely when scrolled to */
+    .experience {
+      position: relative;
+      scroll-margin-top: 140px;
+    }
+
+    /* STAR mark on the left */
+    .experience.star-hit::before {
+      content: "✦";
+      position: absolute;
+      left: -32px;
+      top: -0.2rem;
+      /* aligns with first line of title */
+      font-size: 30px;
+      color: #eedec4;
+      text-shadow: 0 0 10px rgb(238, 222, 196);
+      animation: starPop 1000ms ease-out both;
+    }
+
+    /* SPLASH burst particles */
+    .experience.star-hit::after {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 0.45em;
+      width: 5px;
+      /* smaller dots */
+      height: 5px;
+      /* smaller dots */
+      border-radius: 999px;
+      background: transparent;
+      box-shadow:
+        10px -6px 0 rgba(238, 222, 196, 0.95),
+        14px 4px 0 rgba(238, 222, 196, 0.85),
+        6px 14px 0 rgba(238, 222, 196, 0.75),
+        -6px 14px 0 rgba(238, 222, 196, 0.75),
+        -14px 4px 0 rgba(238, 222, 196, 0.85),
+        -10px -6px 0 rgba(238, 222, 196, 0.95),
+        0px -14px 0 rgba(238, 222, 196, 0.75);
+      animation: starBurst 700ms ease-out both;
+      pointer-events: none;
+    }
+
+    @keyframes starPop {
+      0% {
+        transform: translateX(-6px) scale(0.6);
+        opacity: 0;
+      }
+
+      60% {
+        transform: translateX(0px) scale(1.12);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(0px) scale(1.0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes starBurst {
+      0% {
+        transform: scale(0.2);
+        opacity: 0;
+        filter: blur(0.6px);
+      }
+
+      35% {
+        transform: scale(1.0);
+        opacity: 1;
+        filter: blur(0px);
+      }
+
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+        filter: blur(0.2px);
+      }
+    }
+  </style>
 </head>
-<body>
+<script>
+  (() => {
+    const sidebarLinks = document.querySelectorAll('.projects-sidebar a[href^="#"]');
+
+    function hit(el) {
+      if (!el) return;
+      el.classList.remove('star-hit');      // restart animation
+      void el.offsetWidth;                  // force reflow
+      el.classList.add('star-hit');
+      setTimeout(() => el.classList.remove('star-hit'), 3000);
+    }
+
+    function goToHash(hash) {
+      const id = (hash || '').slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      hit(el);
+    }
+
+    sidebarLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        const hash = a.getAttribute('href');
+        if (!hash) return;
+        e.preventDefault();
+        history.pushState(null, '', hash);
+        goToHash(hash);
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (location.hash) goToHash(location.hash);
+    });
+
+    window.addEventListener('popstate', () => {
+      if (location.hash) goToHash(location.hash);
+    });
+  })();
+</script>
+
+<body class="projects-page">
   <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="index.html">Zoe Zhang</a>
       <ul class="nav-list">
         <li><a href="about.html">About</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="misc.html">Misc.</a></li>
       </ul>
     </nav>
   </header>
 
-  <main id="main" class="container">
-    <h1>Projects</h1>
-    <p>Coming soon…</p>
-  </main>
+  <main id="main" aria-label="Projects">
+    <section class="projects-layout">
 
+      <!-- LEFT SIDEBAR -->
+      <aside class="projects-sidebar" aria-label="Sections">
+        <div class="sidebar-group">
+          <h2 class="sidebar-title">Research</h2>
+          <ul class="sidebar-links">
+            <li><a href="#rea1">ISS Research Lab </a></li>
+            <li><a href="#rea2">Star Formation Research</a></li>
+            <!-- <li><a href="#exp3"></a></li> -->
+          </ul>
+        </div>
+
+        <div class="sidebar-group">
+          <h2 class="sidebar-title">Creative</h2>
+          <ul class="sidebar-links">
+            <li><a href="#eng1">RoboQuest</a></li>
+            <li><a href="#eng2">R&D</a></li>
+            <li><a href="#eng3">MIT BWSI RACECAR</a></li>
+            <li><a href="#eng4">UCSD COSMOS</a></li>
+            <li><a href="#eng5">stuff?</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-group">
+          <h2 class="sidebar-title">Outreach</h2>
+          <ul class="sidebar-links">
+            <li><a href="#out1">Astronomy Observing Night</a></li>
+            <li><a href="#out2">Elementary Schools Outreach</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-group">
+          <h2 class="sidebar-title">Music</h2>
+          <ul class="sidebar-links">
+            <li><a href="#mus1">Orcheastra</a></li>
+            <li><a href="#mus2">Bethany Alliance Church</a></li>
+            <li><a href="#mus3">Worst</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- VERTICAL LINE -->
+      <div class="projects-divider" aria-hidden="true"></div>
+
+      <!-- CENTER CONTENT -->
+      <section class="projects-content" aria-label="Project list">
+        <!-- each block links to its own page -->
+        <a id="rea1" class="experience" href="projects/research1.html">
+          <h3 class="experience-title">ISS Research Lab</h3>
+          <p class="experience-sub">We send experiments to International Space Station!</p>
+        </a>
+
+        <a id="rea2" class="experience" href="projects/research2.html">
+          <h3 class="experience-title">Star Formation Research</h3>
+          <p class="experience-sub"></p>
+        </a>
+
+        <a id="eng1" class="experience" href="projects/eng1.html">
+          <h3 class="experience-title">RoboQuest</h3>
+          <p class="experience-sub">Robot that search and rescue in disaster(tho simulated)</p>
+        </a>
+
+        <a id="eng2" class="experience" href="projects/eng2.html">
+          <h3 class="experience-title">R&amp;D</h3>
+          <p class="experience-sub">From 1 km underwater to 400 km above ground </p>
+        </a>
+
+        <a id="eng3" class="experience" href="projects/eng3.html">
+          <h3 class="experience-title">MIT BWSI RACECAR</h3>
+          <p class="experience-sub"> We program autonomous racecar 🏎️ .。...。 </p>
+        </a>
+
+        <a id="eng4" class="experience" href="projects/eng4.html">
+          <h3 class="experience-title">UCSD COSMOS Summer Program</h3>
+          <p class="experience-sub">The world is a HUGEEEEE Kinetic Sculpture. huge</p>
+        </a>
+
+        <a id="eng5" class="experience" href="projects/eng5.html">
+          <h3 class="experience-title">stuff?</h3>
+          <p class="experience-sub">Check out some random stuff?</p>
+        </a>
+
+        <a id="out1" class="experience" href="projects/out1.html">
+          <h3 class="experience-title">Astronomy Observing Night</h3>
+          <p class="experience-sub">"Where Do We Come From? What Are We? Where Are We Going?" </p>
+        </a>
+
+        <a id="out2" class="experience" href="projects/out1.html">
+          <h3 class="experience-title">Elementary Schools Outreach</h3>
+          <p class="experience-sub">We teach kids science through fun experiments! </p>
+        </a>
+
+        <a id="mus1" class="experience" href="projects/mus1.html">
+          <h3 class="experience-title">EVYO Orcheastra</h3>
+          <p class="experience-sub">violin</p>
+        </a>
+
+        <a id="mus2" class="experience" href="projects/mus2.html">
+          <h3 class="experience-title">Bethany Alliance Church</h3>
+          <p class="experience-sub">Christianity, worship singer, homeless shelter</p>
+        </a>
+
+        <a id="mus3" class="experience" href="projects/mus3.html">
+          <h3 class="experience-title">Worst</h3>
+          <p class="experience-sub"> performance experience</p>
+        </a>
+
+
+      </section>
+
+    </section>
+  </main>
 </body>
+
 </html>
