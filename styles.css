@@ -534,7 +534,7 @@ body.portfolio-page .overlay-text h3 {
 }
 
 body.portfolio-page .overlay-text p {
-  font-size: 0.4em;
+  font-size: 0.46em;
 }
 
 /* About & Home: smaller hero/profile photo */
@@ -782,9 +782,12 @@ main.container>h1 {
   padding: 3px 0 40px;
   /* less top space */
 }
-.randomize-btn{
-  background: #02216d;          /* solid button color */
-  color: #fff;                  /* text color */
+
+.randomize-btn {
+  background: #02216d;
+  /* solid button color */
+  color: #fff;
+  /* text color */
   border: 1px solid #02216d;
   padding: 12px 18px;
   border-radius: 999px;
@@ -794,3 +797,17 @@ main.container>h1 {
   cursor: pointer;
 }
 
+.overlay-text {
+  width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.overlay-text h3 {
+  letter-spacing: 0.05em;
+}
+
+.overlay-text p {
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
