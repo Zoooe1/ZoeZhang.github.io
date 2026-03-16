@@ -811,6 +811,7 @@ main.container>h1 {
   letter-spacing: 0.06em;
   line-height: 1.2;
 }
+
 body.project-page {
   margin: 0;
   background: #eedec48b;
@@ -832,7 +833,7 @@ body.project-page {
 
 .project-label {
   font-size: 0.85rem;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -856,7 +857,7 @@ body.project-page {
   margin: 0 0 16px;
   font-size: 1rem;
   line-height: 1.9;
-  color: rgba(0,0,0,0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .image-block {
@@ -880,7 +881,7 @@ body.project-page {
   margin-top: 10px;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: rgba(0,0,0,0.62);
+  color: rgba(0, 0, 0, 0.62);
 }
 
 .image-grid {
@@ -904,13 +905,13 @@ body.project-page {
   gap: 12px;
   margin-top: 56px;
   padding-top: 22px;
-  border-top: 1px solid rgba(0,0,0,0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .project-nav a {
   color: #000;
   text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.16);
+  border: 1px solid rgba(0, 0, 0, 0.16);
   border-radius: 999px;
   padding: 10px 14px;
   width: fit-content;
@@ -920,12 +921,20 @@ body.project-page {
 
 .project-nav a:hover {
   transform: translateY(-1px);
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
 }
 
-.project-nav .prev { justify-self: start; }
-.project-nav .back { justify-self: center; }
-.project-nav .next { justify-self: end; }
+.project-nav .prev {
+  justify-self: start;
+}
+
+.project-nav .back {
+  justify-self: center;
+}
+
+.project-nav .next {
+  justify-self: end;
+}
 
 @media (max-width: 700px) {
   .image-grid {
