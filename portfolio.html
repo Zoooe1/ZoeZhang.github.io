@@ -19,13 +19,13 @@
       padding: 28px 0 40px;
     }
 
-    /* viewer width for horizontal images_webp */
+    /* viewer width for horizontal images */
     .single-portfolio .card {
       width: min(620px, 92vw);
       margin: 0;
     }
 
-    /* default: horizontal images_webp fill width */
+    /* default: horizontal images fill width */
     .single-portfolio .card img {
       width: 100%;
       height: auto;
@@ -33,7 +33,7 @@
       object-fit: contain;
     }
 
-    /* portrait images_webp: smaller (height-capped) */
+    /* portrait images: smaller (height-capped) */
     .single-portfolio .card img.is-portrait {
       width: auto;
       max-width: 92vw;
@@ -107,68 +107,69 @@
   <script>
     (() => {
       const items = [
-        { src: "assets/images_webp/IMG_0001.jpg", alt: "Adventure", title: "Adventure", desc: "I should've worn long sleeves and pants so that I won't get 20 mosquito bites......" },
-        { src: "assets/images_webp/IMG_3479_3.jpg", alt: "Past", title: "The Flowing Past", desc: "\"No man ever steps in the same river twice, for it's not the same river and he's not the same man.\" --Heraclitus" },
-        { src: "assets/images_webp/IMG_3917_5.jpg", alt: "Fishing", title: "Harmony", desc: "" },
-        { src: "assets/images_webp/IMG_2365_3.jpg", alt: "SF", title: "Infinity", desc: " Why did 1900 choose to stay on that ship? " },
-        { src: "assets/images_webp/IMG_9912_3.jpg", alt: "轮渡", title: "Half ferry, half life", desc: "-^-^-On a Seattle ferry--^- " },
-        { src: "assets/images_webp/IMG_9260_3.jpg", alt: "Waiting", title: "Waiting", desc: "" },
-        { src: "assets/images_webp/IMG_9071.jpg", alt: "Stanford", title: "Stanford", desc: "" },
-        { src: "assets/images_webp/IMG_2810_2.jpg", alt: "Store", title: "Time on the Shelf", desc: "On sale!!!" },
-        { src: "assets/images_webp/IMG_0003.jpg", alt: "迁徙", title: "Migration", desc: "The world is calling" },
-        { src: "assets/images_webp/IMG_2433.jpg", alt: "光盘", title: "Revisted", desc: "In honor of the departed musicians and their timeless music." },
-        { src: "assets/images_webp/IMG_2809_2.jpg", alt: "奶奶", title: "Crescent", desc: "Wrinkles in Time" },
-        { src: "assets/images_webp/IMG_0002.jpg", alt: "猫", title: "张乃猫", desc: "To remember" },
-        { src: "assets/images_webp/IMG_2444_2.jpg", alt: "老家", title: "Days", desc: "One must learn to dwell peacefully within solitude" },
-        { src: "assets/images_webp/IMG_2441.jpg", alt: "北京", title: "Beijing", desc: "The place I grew up" },
+        { src: "assets/images/IMG_0001.jpg", alt: "Adventure", title: "Adventure", desc: "I should've worn long sleeves and pants so that I won't get 20 mosquito bites......" },
+        { src: "assets/images/IMG_3479_3.jpg", alt: "Past", title: "The Flowing Past", desc: "\"No man ever steps in the same river twice, for it's not the same river and he's not the same man.\" --Heraclitus" },
+        { src: "assets/images/IMG_3917_5.jpg", alt: "Fishing", title: "Harmony", desc: "" },
+        { src: "assets/images/IMG_2365_3.jpg", alt: "SF", title: "Infinity", desc: " Why did 1900 choose to stay on that ship? " },
+        { src: "assets/images/IMG_9912_3.jpg", alt: "轮渡", title: "Half ferry, half life", desc: "-^-^-On a Seattle ferry--^- " },
+        { src: "assets/images/IMG_9260_3.jpg", alt: "Waiting", title: "Waiting", desc: "" },
+        { src: "assets/images/IMG_9071.jpg", alt: "Stanford", title: "Stanford", desc: "" },
+        { src: "assets/images/IMG_2810_2.jpg", alt: "Store", title: "Time on the Shelf", desc: "On sale!!!" },
+        { src: "assets/images/IMG_0003.jpg", alt: "迁徙", title: "Migration", desc: "The world is calling" },
+        { src: "assets/images/IMG_2433.jpg", alt: "光盘", title: "Revisted", desc: "In honor of the departed musicians and their timeless music." },
+        { src: "assets/images/IMG_2809_2.jpg", alt: "奶奶", title: "Crescent", desc: "Wrinkles in Time" },
+        { src: "assets/images/IMG_0002.jpg", alt: "猫", title: "张乃猫", desc: "To remember" },
+        { src: "assets/images/IMG_2444_2.jpg", alt: "老家", title: "Days", desc: "One must learn to dwell peacefully within solitude" },
+        { src: "assets/images/IMG_2441.jpg", alt: "北京", title: "Beijing", desc: "The place where I grew up" },
         {
-          src: "assets/images_webp/IMG_2161_4.jpg", alt: "The Ripples of Walden", title: "The Ripples of Walden",
+          src: "assets/images/IMG_2161_4.jpg", alt: "The Ripples of Walden", title: "The Ripples of Walden",
           desc: "<br><br>Took this by an accident while I was walking in a park (seeking relief from the AP Bio, yes).<br><br>Its spiraling stem, with perfect golden ratio, dancing, breathing, and reaching towards the sun, reminding me of the ripples in the Walden Pond."
         },
-        { src: "assets/images_webp/IMG_3441_3.jpg", alt: "连接的线条", title: "The Lines of connection", desc: "" },
-        { src: "assets/images_webp/IMG_2430_3.jpg", alt: "生命的线条", title: "The Lines of Life", desc: "" },
-        { src: "assets/images_webp/IMG_2182.jpg", alt: "松", title: "Pines", desc: "" },
-        { src: "assets/images_webp/IMG_4446_2.jpg", alt: "一场等待", title: "A wait", desc: "" },
-        { src: "assets/images_webp/IMG_4814.jpg", alt: "分形", title: "Fractal", desc: "" },
-        { src: "assets/images_webp/IMG_4802.jpg", alt: "蜜蜂", title: "Busy Bees", desc: "" },
-        { src: "assets/images_webp/IMG_0067.jpg", alt: "春天", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_7317.jpg", alt: "水手", title: "Sailor", desc: "I am the Sailor" },
-        { src: "assets/images_webp/IMG_8563.jpg", alt: "枫叶", title: "Dizzy Stars", desc: "" },
+        { src: "assets/images/IMG_3441_3.jpg", alt: "连接的线条", title: "The Lines of connection", desc: "" },
+        { src: "assets/images/IMG_2430_3.jpg", alt: "生命的线条", title: "The Lines of Life", desc: "" },
+        { src: "assets/images/IMG_2182.jpg", alt: "松", title: "Pines", desc: "" },
+        { src: "assets/images/IMG_4446_2.jpg", alt: "一场等待", title: "A wait", desc: "" },
+        { src: "assets/images/IMG_4814.jpg", alt: "分形", title: "Fractal", desc: "" },
+        { src: "assets/images/IMG_4802.jpg", alt: "蜜蜂", title: "Busy Bees", desc: "" },
+        { src: "assets/images/IMG_0067.jpg", alt: "春天", title: "", desc: "" },
+        { src: "assets/images/IMG_7317.jpg", alt: "水手", title: "Sailor", desc: "I am the Sailor" },
+        { src: "assets/images/IMG_8563.jpg", alt: "枫叶", title: "Dizzy Stars", desc: "" },
         {
-          src: "assets/images_webp/IMG_4634.jpg", alt: "风的形状", title: "Shape of the wind",
+          src: "assets/images/IMG_4634.jpg", alt: "风的形状", title: "Shape of the wind",
           desc: ""
         },
-        { src: "assets/images_webp/IMG_0004.jpg", alt: "阅读", title: "A rainy Sunday in autumn", desc: "Reading is the quiet self awakening" },
-        { src: "assets/images_webp/IMG_4665.jpg", alt: "时间", title: "Time", desc: "" },
-        { src: "assets/images_webp/IMG_0068.jpg", alt: "柳絮", title: "The very first photo of my cannon camera", desc: "" },
-        { src: "assets/images_webp/IMG_4657.jpg", alt: "一片时间", title: "a slice of time", desc: "" },
-        { src: "assets/images_webp/IMG_5074.jpg", alt: "童年", title: "Peek into the Chilhood", desc: "" },
-        { src: "assets/images_webp/IMG_5327.jpg", alt: "木头", title: "Drift Wood", desc: "" },
-        { src: "assets/images_webp/IMG_5647.jpg", alt: "小鹿", title: "Observer", desc: "" },
-        { src: "assets/images_webp/IMG_2434_3.jpg", alt: "Store", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_5685.jpg", alt: "", title: "I came to this world", desc: "<br><br>我来到这个世界<br><br>为的是看太阳,和 蔚蓝色的原野<br><br>和 连绵的群山<br><br><br><br><br><br>我来到这个世界<br><br>为的是看大海 和百花盛开的峡谷<br><br>我与世界面对面签订了合约<br><br>我是世界的真主<br><br>我战胜了冷漠无言的冰川<br><br>我创造了自己的理想" },
-        { src: "assets/images_webp/IMG_5647.jpg", alt: "", title: "Observer", desc: "" },
-        { src: "assets/images_webp/IMG_5673.jpg", alt: "", title: "Dawn", desc: "" },
-        { src: "assets/images_webp/IMG_2708_2.jpg", alt: "", title: "Puerto Rico", desc: "" },
-        { src: "assets/images_webp/IMG_2491.jpg", alt: "", title: "Damping", desc: "" },
-        { src: "assets/images_webp/IMG_6240.jpg", alt: "", title: "The Burning Summer", desc: "" },
-        { src: "assets/images_webp/IMG_9534.jpg", alt: "绿昏", title: "dusk", desc: "" },
-        { src: "assets/images_webp/IMG_1775.jpg", alt: "夏日，烟火", title: "Lemon", desc: "One of my fav show - Unnatural" },
-        { src: "assets/images_webp/IMG_2542_2.jpg", alt: "波粒二象性", title: "波粒二象性", desc: "" },
-        { src: "assets/images_webp/IMG_1333_2.jpg", alt: "", title: "Freedom", desc: "" },
-        { src: "assets/images_webp/IMG_1354.jpg", alt: "", title: "Creation", desc: "" },
-        { src: "assets/images_webp/IMG_0811_2.jpg", alt: "", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_0102.jpg", alt: "", title: "Alive", desc: "" },
-        { src: "assets/images_webp/IMG_3549.jpg", alt: "", title: "Conscious", desc: "I don't think I think therefore I am " },
-        { src: "assets/images_webp/IMG_2883.jpg", alt: "", title: "ASGSR", desc: "" },
-        { src: "assets/images_webp/IMG_2777.jpg", alt: "", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_3652.jpg", alt: "", title: "Self", desc: "We can always discover ourselves in nature" },
-        { src: "assets/images_webp/IMG_6687.jpg", alt: "", title: "Museum", desc: "" },
-        { src: "assets/images_webp/IMG_9733.jpg", alt: "", title: "UW seattle", desc: "" },
-        { src: "assets/images_webp/IMG_2821.jpg", alt: "", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_5526.jpg", alt: "", title: "", desc: "" },
-        { src: "assets/images_webp/IMG_2835.jpg", alt: "", title: "Desert", desc: "埃伦蒂拉并没有听见。<br><br>她逆着风奔跑，快得像一头鹿，这世上没有任何声音能把她拦下。她一路跑去，头也不回，掠过硝石水洼蒸腾的灼热白汽，掠过仿佛令人昏沉的高脚屋，穿过那些像滑石粉一样的坑穴与盐碱的荒地——一直跑到海的自然法则失效、沙漠开始的地方。可她依旧没有停下：她穿着那件金色背心，继续跑向更干燥的风里，跑向永无尽头的落日余晖。" },
+        { src: "assets/images/IMG_0004.jpg", alt: "阅读", title: "A rainy Sunday in autumn", desc: "Reading is the quiet self awakening" },
+        { src: "assets/images/IMG_4665.jpg", alt: "时间", title: "Time", desc: "" },
+        { src: "assets/images/IMG_0068.jpg", alt: "柳絮", title: "The very first photo of my cannon camera", desc: "" },
+        { src: "assets/images/IMG_4657.jpg", alt: "一片时间", title: "a slice of time", desc: "" },
+        { src: "assets/images/IMG_5074.jpg", alt: "童年", title: "Peek into the Chilhood", desc: "" },
+        { src: "assets/images/IMG_5327.jpg", alt: "木头", title: "Drift Wood", desc: "" },
+        { src: "assets/images/IMG_5647.jpg", alt: "小鹿", title: "Observer", desc: "" },
+        { src: "assets/images/IMG_2434_3.jpg", alt: "Store", title: "", desc: "" },
+        { src: "assets/images/IMG_5685.jpg", alt: "", title: "I came to this world", desc: "<br><br>我来到这个世界<br><br>为的是看太阳,和 蔚蓝色的原野<br><br>和 连绵的群山<br><br><br><br><br><br>我来到这个世界<br><br>为的是看大海 和百花盛开的峡谷<br><br>我与世界面对面签订了合约<br><br>我是世界的真主<br><br>我战胜了冷漠无言的冰川<br><br>我创造了自己的理想" },
+        { src: "assets/images/IMG_5647.jpg", alt: "", title: "Observer", desc: "" },
+        { src: "assets/images/IMG_5673.jpg", alt: "", title: "Dawn", desc: "" },
+        { src: "assets/images/IMG_2708_2.jpg", alt: "", title: "Puerto Rico", desc: "" },
+        { src: "assets/images/IMG_2491.jpg", alt: "", title: "Damping", desc: "" },
+        { src: "assets/images/IMG_6240.jpg", alt: "", title: "The Burning Summer", desc: "" },
+        { src: "assets/images/IMG_9534.jpg", alt: "绿昏", title: "dusk", desc: "" },
+        { src: "assets/images/IMG_1775.jpg", alt: "夏日，烟火", title: "Lemon", desc: "One of my fav show - Unnatural" },
+        { src: "assets/images/IMG_2542_2.jpg", alt: "波粒二象性", title: "波粒二象性", desc: "" },
+        { src: "assets/images/IMG_1333_2.jpg", alt: "", title: "Freedom", desc: "" },
+        { src: "assets/images/IMG_1354.jpg", alt: "", title: "Creation", desc: "" },
+        { src: "assets/images/IMG_0811_2.jpg", alt: "", title: "", desc: "" },
+        { src: "assets/images/IMG_0102.jpg", alt: "", title: "Alive", desc: "" },
+        { src: "assets/images/IMG_3549.jpg", alt: "", title: "Conscious", desc: "I don't think I think therefore I am " },
+        { src: "assets/images/IMG_2883.jpg", alt: "", title: "ASGSR", desc: "" },
+        { src: "assets/images/IMG_2777.jpg", alt: "", title: "", desc: "" },
+        { src: "assets/images/IMG_3652.jpg", alt: "", title: "Self", desc: "We can always discover ourselves in nature" },
+        { src: "assets/images/IMG_6687.jpg", alt: "", title: "Museum", desc: "" },
+        { src: "assets/images/IMG_9733.jpg", alt: "", title: "UW seattle", desc: "" },
+        { src: "assets/images/IMG_2821.jpg", alt: "", title: "", desc: "" },
+        { src: "assets/images/IMG_5526.jpg", alt: "", title: "", desc: "" },
+        { src: "assets/images/IMG_2835.jpg", alt: "", title: "Desert", desc: "埃伦蒂拉并没有听见。<br><br>她逆着风奔跑，快得像一头鹿，这世上没有任何声音能把她拦下。她一路跑去，头也不回，掠过硝石水洼蒸腾的灼热白汽，掠过仿佛令人昏沉的高脚屋，穿过那些像滑石粉一样的坑穴与盐碱的荒地——一直跑到海的自然法则失效、沙漠开始的地方。可她依旧没有停下：她穿着那件金色背心，继续跑向更干燥的风里，跑向永无尽头的落日余晖。" },
       ];
+
       const cardLink = document.getElementById("cardLink");
       const cardImg = document.getElementById("cardImg");
       const cardTitle = document.getElementById("cardTitle");
@@ -177,10 +178,9 @@
 
       let last = -1;
 
-      // ✅ bind ONCE (do NOT put this inside render)
       cardImg.addEventListener("load", () => {
         const portrait = cardImg.naturalHeight > cardImg.naturalWidth;
-        cardImg.classList.toggle("is-portrait", portrait); // matches: img.is-portrait
+        cardImg.classList.toggle("is-portrait", portrait);
       });
 
       function pick() {
@@ -195,27 +195,13 @@
         last = i;
 
         cardLink.href = it.src;
-
-        // clear portrait class so it doesn't "stick"
-        cardImg.classList.remove("is-portrait");
-
-        // text first (no waiting)
         cardTitle.textContent = it.title || "";
         cardDesc.innerHTML = it.desc || "";
 
-        // swap image
-        cardImg.decoding = "async";
-        cardImg.loading = "eager";
-        cardImg.src = it.src;
+        cardImg.classList.remove("is-portrait");
         cardImg.alt = it.alt || "";
-
-        // ✅ preload next image (lightweight)
-        if (items.length > 1) {
-          const next = items[(i + 1) % items.length];
-          const pre = new Image();
-          pre.decoding = "async";
-          pre.src = next.src;
-        }
+        cardImg.decoding = "async";
+        cardImg.src = it.src;
       }
 
       function randomize() {
