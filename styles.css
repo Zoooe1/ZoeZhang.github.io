@@ -811,3 +811,138 @@ main.container>h1 {
   letter-spacing: 0.06em;
   line-height: 1.2;
 }
+body.project-page {
+  margin: 0;
+  background: #eedec48b;
+  color: #000;
+}
+
+/* only project content changes font/color */
+.project-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 36px 20px 72px;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.project-top {
+  margin: 18px 0 34px;
+}
+
+.project-label {
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-family: Papyrus, "Papyrus", "Comic Sans MS", cursive;
+  color: #000;
+}
+
+.content-block {
+  margin: 0 0 34px;
+}
+
+.content-block p {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(0,0,0,0.9);
+}
+
+.image-block {
+  margin: 28px 0 34px;
+}
+
+.image-block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.image-block.narrow {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-block figcaption {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.62);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 28px 0 34px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+.project-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+.project-nav a {
+  color: #000;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.16);
+  border-radius: 999px;
+  padding: 10px 14px;
+  width: fit-content;
+  transition: transform 0.15s ease, background 0.15s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.project-nav a:hover {
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.06);
+}
+
+.project-nav .prev { justify-self: start; }
+.project-nav .back { justify-self: center; }
+.project-nav .next { justify-self: end; }
+
+@media (max-width: 700px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .project-nav .prev,
+  .project-nav .back,
+  .project-nav .next {
+    justify-self: start;
+  }
+}
+
+.content-block p {
+  text-indent: 2em;
+}
