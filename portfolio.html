@@ -169,7 +169,6 @@
         { src: "assets/images/IMG_5526.jpg", alt: "", title: "", desc: "" },
         { src: "assets/images/IMG_2835.jpg", alt: "", title: "Desert", desc: "埃伦蒂拉并没有听见。<br><br>她逆着风奔跑，快得像一头鹿，这世上没有任何声音能把她拦下。她一路跑去，头也不回，掠过硝石水洼蒸腾的灼热白汽，掠过仿佛令人昏沉的高脚屋，穿过那些像滑石粉一样的坑穴与盐碱的荒地——一直跑到海的自然法则失效、沙漠开始的地方。可她依旧没有停下：她穿着那件金色背心，继续跑向更干燥的风里，跑向永无尽头的落日余晖。" },
       ];
-
       const cardLink = document.getElementById("cardLink");
       const cardImg = document.getElementById("cardImg");
       const cardTitle = document.getElementById("cardTitle");
@@ -180,23 +179,47 @@
         e.preventDefault();
       });
 
-      let last = -1;
-
       cardImg.addEventListener("load", () => {
         const portrait = cardImg.naturalHeight > cardImg.naturalWidth;
         cardImg.classList.toggle("is-portrait", portrait);
       });
 
-      function pick() {
-        if (items.length <= 1) return 0;
-        let i = Math.floor(Math.random() * items.length);
-        while (i === last) i = Math.floor(Math.random() * items.length);
+      let deck = [];
+      let deckPos = 0;
+      let lastShown = -1;
+
+      function shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function refillDeck() {
+        const allIndexes = items.map((_, i) => i);
+        deck = shuffle(allIndexes);
+
+        if (deck.length > 1 && deck[0] === lastShown) {
+          [deck[0], deck[1]] = [deck[1], deck[0]];
+        }
+
+        deckPos = 0;
+      }
+
+      function nextIndex() {
+        if (deckPos >= deck.length) {
+          refillDeck();
+        }
+        const i = deck[deckPos++];
+        lastShown = i;
         return i;
       }
 
       function render(i) {
         const it = items[i];
-        last = i;
+
         cardLink.href = "#";
         cardTitle.textContent = it.title || "";
         cardDesc.innerHTML = it.desc || "";
@@ -208,9 +231,10 @@
       }
 
       function randomize() {
-        render(pick());
+        render(nextIndex());
       }
 
+      refillDeck();
       window.addEventListener("DOMContentLoaded", randomize);
       btn.addEventListener("click", randomize);
     })();
