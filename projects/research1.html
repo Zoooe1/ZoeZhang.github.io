@@ -166,18 +166,40 @@
 
         <section class="content-block">
             <p>
-                Put your real main content here immediately. No repeated short summary.
-                This is where the page actually begins.
+                ISS stands for International Space Station. With microgravity, and very different radiation environment,
+                we are able to study phenomena that are impossible to be explored here on ground.
+                Throughout the year, we brainstorm, design, and conduct experiment as a team of 8. Because everything
+                that
+                sent onto ISS is very expensive, the whole experiment needs to fit within a microlab (see below) which
+                is even smaller than palm size.
+                There are also a lot other constraints, power, safetiness, everything will be automatic and no astronaut
+                will help us to plug or manipulate anything, which really makes this design process difficult.
+                The microlab will simply be turned on and microcontroller Arduino itsyBitsy will be used to control and
+                moniter the whole experimental process.
+
             </p>
             <p>
-                You can write about what the project was, what you did, what you learned,
-                or tell the story in a more reflective way.
+                For the past two years, I did two research project:
+            </p>
+            <div class="project-buttons">
+                <a class="project-button rocket-link" href="aspergillus.html">
+                    2024-2025 (Member) Examining the Effects of Microgravity on the Corrosivity of <em>Aspergillus
+                        niger</em>
+                </a>
+
+                <a class="project-button rocket-link" href="eeprom.html">
+                    2025-2026 (Team Lead) Influence of Cosmic Rays on EEPROM Memory Chips
+                </a>
+            </div>
+            <div id="rocket-launcher" aria-hidden="true">🚀</div>
+            <p>
+                Feel free to click into specific project that you are interested in!
             </p>
         </section>
 
         <figure class="image-block">
-            <img src="../assets/images/IMG_0001.jpg" alt="ISS Research Lab photo" loading="lazy">
-            <figcaption>An image from the experience.</figcaption>
+            <img src="../assets/images/ISS/IMG_6854.jpg" alt="" loading="lazy">
+            <figcaption>goodbye microlab</figcaption>
         </figure>
 
         <section class="content-block">
@@ -187,8 +209,8 @@
         </section>
 
         <div class="image-grid">
-            <img src="../assets/images/IMG_0002.jpg" alt="Project photo 1" loading="lazy">
-            <img src="../assets/images/IMG_0003.jpg" alt="Project photo 2" loading="lazy">
+            <!-- <img src="../assets/images/ISS/IMG_6603.jpg" alt="Project photo 1" loading="lazy">
+            <img src="../assets/images/ISS/IMG_6604.jpg" alt="Project photo 2" loading="lazy"> -->
         </div>
 
         <section class="content-block">
@@ -203,6 +225,59 @@
             <a class="next" href="research2.html">Next →</a>
         </nav>
     </main>
+    <script>
+        (() => {
+            const rocket = document.getElementById("rocket-launcher");
+            const links = document.querySelectorAll(".rocket-link");
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (!rocket || links.length === 0) return;
+
+            let isLaunching = false;
+
+            function resetRocketState() {
+                isLaunching = false;
+                rocket.classList.remove("launching");
+                rocket.style.removeProperty("--start-x");
+                rocket.style.removeProperty("--start-y");
+            }
+
+            links.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    if (isLaunching) {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    const targetUrl = link.href;
+
+                    if (prefersReducedMotion) {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    isLaunching = true;
+
+                    const rect = link.getBoundingClientRect();
+                    const startX = rect.left + rect.width / 2 - 28;
+                    const startY = rect.top + rect.height / 2 - 28;
+
+                    rocket.style.setProperty("--start-x", `${startX}px`);
+                    rocket.style.setProperty("--start-y", `${startY}px`);
+
+                    rocket.classList.remove("launching");
+                    void rocket.offsetWidth;
+                    rocket.classList.add("launching");
+
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 1500);
+                });
+            });
+
+            window.addEventListener("pageshow", resetRocketState);
+        })();
+    </script>
 </body>
 
 </html>

@@ -952,6 +952,143 @@ body.project-page {
   }
 }
 
-.content-block p {
-  text-indent: 2em;
+.indent {
+  display: inline-block;
+  width: 2em;
+}
+
+.project-buttons {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+
+.project-button {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 12px 18px;
+  margin: 0 0 16px;
+  border: 1px solid rgb(31, 32, 98);
+  border-radius: 16px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.72);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.9;
+  box-shadow:
+    0 6px 18px rgba(31, 32, 98, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.project-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 10px 24px rgba(31, 32, 98, 0.596),
+    0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+.project-button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 10px rgba(31, 32, 98, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* rocket */
+#rocket-launcher {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 4rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-100px, -100px);
+  will-change: transform, opacity;
+}
+
+#rocket-launcher.launching {
+  opacity: 1;
+  animation: rocketFlight 2s cubic-bezier(0.12, 0.72, 0.2, 1) forwards;
+}
+
+@keyframes rocketFlight {
+  0% {
+    transform: translate(var(--start-x), var(--start-y)) scale(1);
+    opacity: 1;
+  }
+
+  2% {
+    transform: translate(calc(var(--start-x) - 10px), calc(var(--start-y) + 5px)) scale(1.02);
+    opacity: 1;
+  }
+
+  4% {
+    transform: translate(calc(var(--start-x) + 12px), calc(var(--start-y) - 6px)) scale(1.04);
+    opacity: 1;
+  }
+
+  6% {
+    transform: translate(calc(var(--start-x) - 8px), calc(var(--start-y) + 4px)) scale(1.06);
+    opacity: 1;
+  }
+
+  8% {
+    transform: translate(calc(var(--start-x) + 9px), calc(var(--start-y) - 5px)) scale(1.08);
+    opacity: 1;
+  }
+
+  10% {
+    transform: translate(var(--start-x), var(--start-y)) scale(1.1);
+    opacity: 1;
+  }
+
+  18% {
+    transform: translate(calc(var(--start-x) + 30px), calc(var(--start-y) - 22px)) scale(1.14);
+    opacity: 1;
+  }
+
+  28% {
+    transform: translate(calc(var(--start-x) + 80px), calc(var(--start-y) - 60px)) scale(1.2);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(calc(var(--start-x) + 170px), calc(var(--start-y) - 125px)) scale(1.32);
+    opacity: 1;
+  }
+
+  54% {
+    transform: translate(calc(var(--start-x) + 310px), calc(var(--start-y) - 230px)) scale(1.5);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(calc(var(--start-x) + 510px), calc(var(--start-y) - 380px)) scale(2);
+    opacity: 1;
+  }
+
+  84% {
+    transform: translate(calc(var(--start-x) + 740px), calc(var(--start-y) - 550px)) scale(4);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(var(--start-x) + 1020px), calc(var(--start-y) - 760px)) scale(8);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #rocket-launcher.launching {
+    animation: none;
+    opacity: 0;
+  }
 }
