@@ -176,6 +176,10 @@
       const cardDesc = document.getElementById("cardDesc");
       const btn = document.getElementById("randomBtn");
 
+      cardLink.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+
       let last = -1;
 
       cardImg.addEventListener("load", () => {
@@ -193,8 +197,7 @@
       function render(i) {
         const it = items[i];
         last = i;
-
-        cardLink.href = it.src;
+        cardLink.href = "#";
         cardTitle.textContent = it.title || "";
         cardDesc.innerHTML = it.desc || "";
 
