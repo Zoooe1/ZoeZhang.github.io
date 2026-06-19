@@ -969,7 +969,7 @@ body.project-page {
   max-width: 100%;
   padding: 12px 18px;
   margin: 0 0 16px;
-  border: 1px solid rgb(31, 32, 98);
+  border: 0px solid rgb(31, 32, 98);
   border-radius: 16px;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.9);
@@ -990,7 +990,7 @@ body.project-page {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.9);
   box-shadow:
-    0 10px 24px rgba(31, 32, 98, 0.596),
+    0 10px 24px rgba(31, 32, 98, 0.195),
     0 4px 10px rgba(0, 0, 0, 0.10);
 }
 
@@ -1091,4 +1091,49 @@ body.project-page {
     animation: none;
     opacity: 0;
   }
+}
+
+.project-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+.project-nav a {
+  text-decoration: none;
+  color: #000000;
+  background: transparent !important;
+  border: none !important;
+  padding: 0;
+  box-shadow: none !important;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-size: inherit;
+  transition: color 0.2s ease;
+}
+
+.project-nav a:hover,
+.project-nav a:focus,
+.project-nav a:active {
+  color: #7a5a3a;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none;
+}
+
+.project-nav .prev {
+  justify-self: start;
+}
+
+.project-nav .back {
+  justify-self: center;
+}
+
+.project-nav .next {
+  justify-self: end;
 }
