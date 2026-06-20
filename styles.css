@@ -554,15 +554,6 @@ body.portfolio-page .overlay-text p {
   /* never crop */
 }
 
-.progressive-image {
-  background: rgba(255, 255, 255, 0.2);
-  transition: opacity 160ms ease;
-}
-
-.progressive-image:not(.is-loaded) {
-  opacity: 0.96;
-}
-
 .profile-photo figcaption {
   text-align: center;
 }
