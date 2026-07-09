@@ -190,7 +190,7 @@ body {
   /* scales nicely */
   /* font-family: "Times New Roman", Times, serif; */
   font-family: "Didot", "Bodoni MT", "Bodoni 72", "Hoefler Text", Garamond, serif;
-  color: #02216d;
+  color: #6b0909;
   /* pick your brand color */
   font-weight: 130;
   /* extra bold for the name */
@@ -212,7 +212,7 @@ body {
 }
 
 .landing-title {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Didot", "Bodoni MT", "Bodoni 72", "Hoefler Text", Garamond, serif;
   font-size: clamp(1rem, 3vw + 1rem, 1.6rem);
   /* responsive sizing: smaller on mobile, bigger on desktop */
   color: #02216d;
@@ -223,6 +223,7 @@ body {
   /* spacing above and below */
   line-height: 1.5;
   /* tighter lines for big text */
+
 }
 
 
@@ -1136,4 +1137,23 @@ body.project-page {
 
 .project-nav .next {
   justify-self: end;
+}
+
+main.container {
+
+  min-height: calc(100vh - 160px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  /* horizontal center */
+
+}
+
+.blurb {
+
+  max-width: 620px;
+  text-align: center;
 }
